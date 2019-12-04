@@ -1,28 +1,47 @@
-function Queue() {
-
-    this.dataStore = Array.prototype.slice.call(arguments, 0);
-    this.enqueue = enqueue;
-    this.dequeue = dequeue;
-    this.empty = empty;
-
-    this.print = print;
-
-    function enqueue(element) {
-        this.dataStore.push(element);
+class Queue {
+    
+    constructor()
+    {
+        this.queue = [];
     }
 
-    function dequeue() {
-        return this.dataStore.shift();
+    enqueue(element)
+    {
+        this.queue.push(element);
+        return this.queue;
     }
 
-    function empty() {
-        return this.dataStore = [];
+    dequeue()
+    {
+        return this.queue.shift();
     }
 
-    function print(element) {
-        this.dataStore.forEach(function (item) {
-            // element.appendChild(item.node);
-            console.log(item);
-        });
+    peek()
+    {
+        return this.queue[0];
+    }
+
+    size()
+    {
+        return this.queue.length;
+    }
+
+    isEmpty()
+    {
+        return this.queue.length === 0;
+    }
+
+    print()
+    {
+        return this.queue;
     }
 }
+
+const queue = new Queue();
+console.log(queue.enqueue('KEKW')); //['KEKW']
+console.log(queue.enqueue('Pepega')); //['KEKW','Pepega']
+console.log(queue.enqueue('5Head')); //['KEKW','Pepega','5Head']
+console.log(queue.dequeue()); //KEKW
+console.log(queue.peek());  //Pepega
+console.log(queue.isEmpty());   //false
+console.log(queue.print()); //['Pepega','5Head']
